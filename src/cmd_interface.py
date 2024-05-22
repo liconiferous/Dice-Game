@@ -59,7 +59,6 @@ class GameCmd(cmd.Cmd):
         if not arg:
             print("Missing argument - try 'change_name player1 player2'")
             return
-        print(arg)
         stuple = str.split(arg, " ")
         if self.game.player1.name == stuple[0]:
             self.game.player1.change_name(stuple[1])
