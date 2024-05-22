@@ -13,7 +13,6 @@ class GameCmd(cmd.Cmd):
         self.game = None
         self.highscores = HighScore()
         
-
     def do_start(self, arg):
         player1 = str(input("enter player1 name: "))
         player2 = str(input("enter player2 name (just leave blank for playing against computer): "))
@@ -42,6 +41,10 @@ class GameCmd(cmd.Cmd):
             print(f"write 'play' for {self.game.current_player.name} to continue")
         else:
             print("No game in progress. Use start to begin a new game.")
+
+    def do_reset(self, arg):
+        self.game.reset_game()
+        print("Game has now been resetted, enter 'play' to start again")
 
     def do_highscores(self, arg):
         self.highscores.display()
