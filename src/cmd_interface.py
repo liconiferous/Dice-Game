@@ -69,6 +69,20 @@ class GameCmd(cmd.Cmd):
             return
         print(f"player1 name: {stuple[0]} changed to: {stuple[1]}")
 
+    def do_change_level(self, arg):
+        if not arg:
+            print("Missing argument - try 'change_level [easy/medium/hard]'")
+            return
+        if isinstance(self.game.player2, NPC):
+            if arg == "easy" or arg == "medium" or arg == "hard":
+                self.game.player2.change_level(arg)
+            else:
+                print(f"{arg} is not a valid level")
+                return
+            print(f'New level is: {str(self.game.player2.get_level())}')
+        else:
+            print("Player2 is not a NPC, level can not be changed")
+
     def do_highscores(self, arg):
         self.highscores.display()
 
