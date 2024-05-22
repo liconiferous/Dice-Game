@@ -46,6 +46,15 @@ class GameCmd(cmd.Cmd):
         self.game.reset_game()
         print("Game has now been resetted, enter 'play' to start again")
 
+    def do_cheat(self, arg):
+        if not arg:
+            print("Missing argument - try 'cheat 100'")
+            return
+
+        score = int(arg)
+        self.game.player1.score = score
+        self.game.hold()
+
     def do_highscores(self, arg):
         self.highscores.display()
 
