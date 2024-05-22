@@ -103,6 +103,7 @@ class GameCmd(cmd.Cmd):
         print('reset - reset the game to start point')
         print('cheat - sets player score to entered value')
         print('change_name - let you change the name of a player')
+        print('change_level - let you change the level of a NPC')
         print('highscores - shows the list of player highscore')
         print('quit - closes down the game')
 
