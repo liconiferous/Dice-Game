@@ -55,6 +55,19 @@ class GameCmd(cmd.Cmd):
         self.game.player1.score = score
         self.game.hold()
 
+    def do_change_name(self, arg):
+        if not arg:
+            print("Missing argument - try 'change_name player1 player2'")
+            return
+        print(f"player1 name: {arg[0]} is changing to: {arg[1]}")
+        if self.game.player1.name == arg[0]:
+            self.game.player1.change_name(arg[1])
+        elif self.game.player2.name == arg[0]:
+            self.game.player2.change_name(arg[1])
+        else:
+            print(f"No player by the name {arg[0]} exist!")
+            return
+
     def do_highscores(self, arg):
         self.highscores.display()
 
