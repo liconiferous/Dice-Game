@@ -15,22 +15,22 @@ class Game:
 
     def switch_player(self):
         self.current_player = self.player1 if self.current_player == self.player2 else self.player2
-        self.dice.TotalValue = 0
+        self.dice.turn_value = 0
 
     def play_turn(self):
-        roll = self.dice.RollDice()
+        roll = self.dice.roll_dice()
         print(f"{self.current_player.name} rolled a {roll}")
         if roll == 1:
             print(f"{self.current_player.name} loses their turn!")
             self.switch_player()
             print(f"Press enter for {self.current_player.name} to continue")
         else:
-            print(f"Turn total is now {self.dice.GetTotalValue()}")
+            print(f"Turn total is now {self.dice.get_turn_value()}")
             if isinstance(self.current_player, NPC) and self.current_player.should_hold(self.dice.GetTotalValue()):
                 self.hold()
 
     def hold(self):
-        self.current_player.score += self.dice.GetTotalValue()
+        self.current_player.score += self.dice.get_turn_value()
         print(f"{self.current_player.name} holds. Total score is now {self.current_player.score}")
         if self.current_player.score >= self.WINNING_SCORE:
             print(f"{self.current_player.name} wins the game!")

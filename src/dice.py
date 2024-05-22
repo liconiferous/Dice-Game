@@ -2,19 +2,17 @@ import random
 
 class Dice:
     def __init__(self):
-        self.NoofRolls = 0
-        self.TotalValue = 0
+        self.no_of_rolls = 0
+        self.turn_value = 0
 
-    def RollDice(self):
-        self.NoofRolls += 1
+    def roll_dice(self):
+        self.no_of_rolls += 1
         Value = random.randint(1, 6)
-        self.TotalValue += Value
+        self.turn_value += Value
         return Value
     
-    def GetNoofRolls(self):
-        return self.NoofRolls
+    def get_no_of_rolls(self):
+        return self.no_of_rolls
     
-    def GetTotalValue(self):
-        return self.TotalValue
-
-
+    def get_turn_value(self):
+        return self.turn_value
