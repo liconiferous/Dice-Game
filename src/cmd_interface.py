@@ -59,14 +59,16 @@ class GameCmd(cmd.Cmd):
         if not arg:
             print("Missing argument - try 'change_name player1 player2'")
             return
-        print(f"player1 name: {arg[0]} is changing to: {arg[1]}")
-        if self.game.player1.name == arg[0]:
-            self.game.player1.change_name(arg[1])
-        elif self.game.player2.name == arg[0]:
-            self.game.player2.change_name(arg[1])
+        print(arg)
+        stuple = str.split(arg, " ")
+        if self.game.player1.name == stuple[0]:
+            self.game.player1.change_name(stuple[1])
+        elif self.game.player2.name == stuple[0]:
+            self.game.player2.change_name(stuple[1])
         else:
-            print(f"No player by the name {arg[0]} exist!")
+            print(f"No player by the name {stuple[0]} exist!")
             return
+        print(f"player1 name: {stuple[0]} changed to: {stuple[1]}")
 
     def do_highscores(self, arg):
         self.highscores.display()
