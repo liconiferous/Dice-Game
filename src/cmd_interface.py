@@ -80,6 +80,19 @@ class GameCmd(cmd.Cmd):
         print("If they hold, they add their turn total to their score.")
         print("First player to reach 100 points wins.")
 
+    def do_help(self, arg):
+        print('Help section - game commands')
+        print('----------------------------')
+        print('rules - shows the rules of the game')
+        print('start - starts the game and let you register players')
+        print('play - starts one turn of the game')
+        print('hold - saves value to next player turn')
+        print('reset - reset the game to start point')
+        print('cheat - sets player score to entered value')
+        print('change_name - let you change the name of a player')
+        print('highscores - shows the list of player highscore')
+        print('quit - closes down the game')
+
     def do_quit(self, arg):
         print('Thank you for playing Pig!')
         return True
