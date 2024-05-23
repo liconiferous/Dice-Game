@@ -1,0 +1,14 @@
+# Code analysis
+flake8
+flake8-docstrings
+flake8-polyfill
+pylint
+pylint-docstring
+pyreverse
+
+# Documentation
+sphinx
+sphinx-rtd-theme
+
+# Unit test and coverage
+coverage
