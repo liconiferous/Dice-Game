@@ -26,7 +26,7 @@ class Game:
             print(f"Press enter for {self.current_player.name} to continue")
         else:
             print(f"Turn total is now {self.dice.get_turn_value()}")
-            if isinstance(self.current_player, NPC) and self.current_player.should_hold(self.dice.GetTotalValue()):
+            if isinstance(self.current_player, NPC) and self.current_player.should_hold(self.dice.get_turn_value()):
                 self.hold()
 
     def hold(self):
