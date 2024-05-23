@@ -65,9 +65,9 @@ class GameCmd(cmd.Cmd):
         elif self.game.player2.name == stuple[0]:
             self.game.player2.change_name(stuple[1])
         else:
-            print(f"No player by the name {stuple[0]} exist!")
+            print(f"No player by the name '{stuple[0]}' exist!")
             return
-        print(f"player1 name: {stuple[0]} changed to: {stuple[1]}")
+        print(f"player1 name: '{stuple[0]}' changed to: '{stuple[1]}'")
 
     def do_change_level(self, arg):
         if not arg:
@@ -79,7 +79,7 @@ class GameCmd(cmd.Cmd):
             else:
                 print(f"{arg} is not a valid level")
                 return
-            print(f'New level is: {str(self.game.player2.get_level())}')
+            print(f"New level is: '{str(self.game.player2.get_level())}'")
         else:
             print("Player2 is not a NPC, level can not be changed")
 

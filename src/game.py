@@ -46,7 +46,7 @@ class Game:
     def play_game(self):
             self.play_turn()
             if not isinstance(self.current_player, NPC) and self.dice.get_turn_value() > 0:
-                print('if you want to hold, write the command hold. Otherwise just hit enter to continue the turn')
+                print("if you want to hold, write the command 'hold'. Otherwise just hit enter to continue the turn")
 
     def reset_game(self):
         self.current_player = self.player1
