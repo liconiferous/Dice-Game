@@ -2,12 +2,13 @@ import json
 import os
 
 class HighScore:
-    def __init__(self, file_path='data/highscores.json'):
+    def __init__(self, file_path='src/data/highscores.json'):
         self.file_path = file_path
         self.scores = self.load_scores()
 
     def load_scores(self):
         if not os.path.exists(self.file_path):
+            print(f"Directory or file do not exist! {self.file_path}")
             return {}
         with open(self.file_path, 'r') as f:
             return json.load(f)
@@ -21,7 +22,7 @@ class HighScore:
             self.scores[player.name] = {'total_games': 0, 'total_wins': 0, 'highest_score': 0}
         self.scores[player.name]['total_games'] += 1
         self.scores[player.name]['total_wins'] += 1 if player.score >= game_winning_score else 0
-        self.scores[player.name]['highest_score'] = player.score if int(self.scores[player.name]['highest_score']) >= game_winning_score else 0
+        self.scores[player.name]['highest_score'] = player.score if int(self.scores[player.name]['highest_score']) <= game_winning_score else int(self.scores[player.name]['highest_score'])
         self.save_scores()
 
     def display(self):
