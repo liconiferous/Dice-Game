@@ -6,6 +6,9 @@ pylint
 pylint-docstring
 pyreverse
 
+# Code style
+black
+
 # Documentation
 sphinx
 sphinx-rtd-theme
