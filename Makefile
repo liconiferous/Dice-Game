@@ -1,29 +1,39 @@
-### Makefile
+#Makefile
 
-Update your `Makefile` to include targets for running tests, generating coverage reports, and other tasks:
-
-```makefile
-.PHONY: test coverage lint doc uml run
-
-test:
-    python -m unittest discover -s tests
-
-coverage:
-    coverage run -m unittest discover -s tests
-    coverage report -m
-    coverage html
-
-lint:
-    pylint src/*.py
-    flake8 src --docstring-convention google
-
-doc:
-    sphinx-apidoc -o doc/api src
-    sphinx-build -b html doc/api doc/api/_build
-
-uml:
-    pyreverse -o png -p Dice-Game src
-    mv *.png doc/uml
+setup:
+	python -m venv .venv
+	python install -r requirements.txt
 
 run:
-    python src/main.py
+	python src/main.py
+
+test:
+	coverage run -m unittest discover -s tests
+
+coverage:
+	coverage report -m
+	coverage html
+	@echo "Coverage report generated in htmlcov/index.html"
+
+lint:
+	flake8 src tests
+	pylint src tests
+
+doc:
+	pdoc --html -o doc/api src
+	@echo "API documentation generated in doc/api"
+
+uml:
+	plantuml -o doc/uml src
+	@echo "UML diagrams generated in doc/uml"
+
+clean:
+	rm -rf .venv
+	rm -rf __pycache__
+	rm -rf .coverage
+	rm -rf htmlcov
+	rm -rf doc/api
+	rm -rf doc/uml
+
+format:
+	.venv/bin/black src tests
